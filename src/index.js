@@ -40,21 +40,15 @@ const isNode = () => {
 };
 
 const isSub = () => {
-  let hasSelf = true;
-  let workerSelf;
-  try {
-    workerSelf = self;
-  } catch {
-    hasSelf = false;
-  }
-
-  const self = workerSelf;
-
   // For testing, this is meant to be run in a web worker.
-  if (self !== undefined && self.name === NODE_NAME) {
-    const module = 'worker_threads';
-    const wt = import(module);
-    return !wt.isMainThread;
+  try {
+    if (self !== undefined && self.name === NODE_NAME) {
+      const module = 'worker_threads';
+      const wt = import(module);
+      return !wt.isMainThread;
+    }
+  } catch {
+    // self is undefined.
   }
 
   return typeof WorkerGlobalScope !== 'undefined' &&

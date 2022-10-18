@@ -1,6 +1,6 @@
 {
   "name": "multee-browser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Turn the browser's multitasking Web Workers into simple async functions",
   "main": "src/index.js",
   "scripts": {
