@@ -4,6 +4,8 @@
   "description": "Turn the browser's multitasking Web Workers into simple async functions",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint ./ --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint ./ --ext .js,.jsx,.ts,.tsx --fix",
     "test": "jest",
     "dist": "mkdir -p dist && cp src/*.* package.json README.md dist/ && cd dist/ && npm publish"
   },

@@ -1,5 +1,8 @@
 # multee-browser
 
+[![Build and test status](https://github.com/WeWatchWall/multee-browser/workflows/Lint%20and%20test/badge.svg)](https://github.com/WeWatchWall/multee-browser/actions?query=workflow%3A%22Lint+and+test%22)
+[![NPM version](https://img.shields.io/npm/v/multee-browser.svg)](https://www.npmjs.com/package/multee-browser)
+
 multee-browser is a "battery" API. It turns the browser's multitasking Web Workers into simple async functions.
 
 ## Why multee helps
