@@ -1,0 +1,33 @@
+{
+  "name": "multee-browser",
+  "version": "0.3.0",
+  "description": "Turn the browser's multitasking Web Workers into simple async functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dist": "mkdir -p dist && cp src/*.* package.json README.md dist/ && cd dist/ && npm publish"
+  },
+  "author": "Adrian Burlacu <adrian.burlacu@live.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeWatchWall/multee-browser"
+  },
+  "homepage": "https://www.npmjs.com/package/multee-browser",
+  "devDependencies": {
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
+    "@types/uuid": "^8.3.0",
+    "eslint": "^7.15.0",
+    "jest": "^26.6.3",
+    "ts-node": "^9.1.1"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
+  },
+  "keywords": [
+    "web-worker",
+    "task",
+    "thread"
+  ]
+}
