@@ -59,7 +59,7 @@ module.exports = {
   start: () => {
     const worker = multee.start(__filename);
     return {
-      test: jobA(worker),
+      run: jobA(worker),
       worker: worker
     };
   }
@@ -69,7 +69,7 @@ module.exports = {
 async function partA() {
   const worker = require('./worker');
   const test = worker.start();
-  const result = await test.test();
+  const result = await test.run();
   // do the rest with result
   console.log(result);
   // { result: 4950 }
