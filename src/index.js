@@ -34,7 +34,8 @@ const createHandler = (name, handler) => {
 const isSub = () => {
   // For testing, this is meant to be run in a web worker.
   if (typeof process === 'object' && typeof window === 'undefined') {
-    const wt = require('worker_threads');
+    const module = 'worker_threads';
+    const wt = import(module);
     return !wt.isMainThread;
   }
 
