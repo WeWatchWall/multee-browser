@@ -13,25 +13,25 @@ The code will look like below without `multee-browser`:
 
 ```javascript
 // worker.js
-onmessage = function (msg) {
+self.addEventListener('message', async msg => {
   // do heavy load job
-  let result = 0
+  let result = 0;
   for (let i = 0; i < 100000000; i++) {
-    result += heavy_and_return_same(i)
+    result += heavy_and_return_same(i);
   }
-  process.send(result)
-};
+  self.postmessage(result);
+});
 
 // main.js
 const child = new Worker('./worker');
 
-child.onmessage = function (msg) {
+worker.addEventListener('message', msg => {
   // if is job result
-  part2(msg)
-};
+  part2(msg.data);
+});
 
 function part1() {
-  child.postmessage(payload_for_worker)
+  child.postmessage(payload_for_worker);
 }
 
 function part2(result) {
@@ -43,16 +43,16 @@ And with `multee-browser`, it's just as easy as calling an async function.
 
 ```javascript
 // worker.js
-const Multee = require('multee-browser')
-const multee = Multee()
+const Multee = require('multee-browser');
+const multee = Multee();
 
 const jobA = multee.createHandler('jobA', () => {
   // do the heavy load here
-  let result = 0
+  let result = 0;
   for (let i = 0; i < 100; i++) {
-    result += heavy_and_return_same(i)
+    result += heavy_and_return_same(i);
   }
-  return result
+  return result;
 })
 
 module.exports = {

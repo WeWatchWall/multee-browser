@@ -1,16 +1,16 @@
-const demoWorker = require('./demo-worker')
+const demoWorker = require('./demo-worker');
 
-describe('worker_threads', () => {
-  let demo
+describe('web worker', () => {
+  let demo;
 
   beforeAll(() => {
-    demo = demoWorker()
-  })
+    demo = demoWorker();
+  });
 
   it('simple string', async () => {
-    const rv = await demo.test('me')
-    expect(rv).toEqual('hello me')
-  })
+    const rv = await demo.test('me');
+    expect(rv).toEqual('hello me');
+  });
 
   it('echo object', async () => {
     const input = {
@@ -20,28 +20,28 @@ describe('worker_threads', () => {
         name: 'Tom',
         age: 12,
       },
-    }
-    const rv = await demo.echo(input)
-    expect(rv).toEqual(input)
-  })
+    };
+    const rv = await demo.echo(input);
+    expect(rv).toEqual(input);
+  });
 
   it('echo with buffer', async () => {
     const input = {
       age: 33,
       name: Buffer.from('John'),
-    }
-    const rv = await demo.echo(input)
-    expect(rv).toHaveProperty('age', 33)
-    expect(rv).toHaveProperty('name')
-    expect(Buffer.from(rv.name)).toEqual(input.name)
-  })
+    };
+    const rv = await demo.echo(input);
+    expect(rv).toHaveProperty('age', 33);
+    expect(rv).toHaveProperty('name');
+    expect(Buffer.from(rv.name)).toEqual(input.name);
+  });
 
   it('async', async () => {
-    const rv = await demo.async()
-    expect(rv).toEqual(1)
-  })
+    const rv = await demo.async();
+    expect(rv).toEqual(1);
+  });
 
   afterAll(() => {
-    demo.close()
-  })
+    demo.close();
+  });
 })
