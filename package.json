@@ -23,6 +23,7 @@
     "@types/uuid": "^8.3.0",
     "chai": "^4.3.6",
     "eslint": "^7.15.0",
+    "flat-promise": "^1.0.3",
     "mocha": "^10.1.0"
   },
   "dependencies": {
