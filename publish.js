@@ -1,7 +1,7 @@
 const execShellCommand = require("./execShellCommand.js");
 const FlatPromise = require('flat-promise');
 
-const packName = 'stark-db';
+const packName = 'multee-browser';
 const WAIT_TIME = 10e3;
 
 async function publish() {
