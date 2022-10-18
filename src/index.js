@@ -4,8 +4,12 @@ const { v4: uuidv4 } = require('uuid');
 const handlers = {};
 const waitingForResolve = {};
 
+const NODE_NAME = 'multee_worker_node';
+const WEB_NAME = 'multee_worker_web';
+
 function buildWorker(filename) {
-  const worker = new Worker(`file:///${filename}`);
+  const name = isNode() ? NODE_NAME : WEB_NAME;
+  const worker = new Worker(filename, {type: 'module', name: name});
   worker.send = worker.postMessage;
 
   return worker;
@@ -31,9 +35,23 @@ const createHandler = (name, handler) => {
   return caller;
 }
 
+const isNode = () => {
+  return typeof process === 'object' && typeof window === 'undefined';
+};
+
 const isSub = () => {
+  let hasSelf = true;
+  let workerSelf;
+  try {
+    workerSelf = self;
+  } catch {
+    hasSelf = false;
+  }
+
+  const self = workerSelf;
+
   // For testing, this is meant to be run in a web worker.
-  if (typeof process === 'object' && typeof window === 'undefined') {
+  if (self !== undefined && self.name === NODE_NAME) {
     const module = 'worker_threads';
     const wt = import(module);
     return !wt.isMainThread;

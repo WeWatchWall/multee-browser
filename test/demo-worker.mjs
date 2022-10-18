@@ -1,4 +1,4 @@
-const Multee = require('../src/index');
+import Multee from '../src/index.js';
 
 const multee = Multee();
 
@@ -16,8 +16,9 @@ const asyncJob = multee.createHandler('async', async () => {
   });
 });
 
-module.exports = function main() {
-  const worker = multee.start(__filename);
+export default function main() {
+  const filename = global.__filename;
+  const worker = multee.start(filename);
   return {
     test: test(worker),
     echo: echo(worker),

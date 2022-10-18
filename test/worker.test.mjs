@@ -1,10 +1,14 @@
-const demoWorker = require('./demo-worker');
+import { expect } from 'chai';
+import { resolve } from 'path';
+import url  from 'url';
+import demoWorker from './demo-worker.mjs';
 
 describe('web worker', () => {
   let demo;
 
-  beforeAll(() => {
-    demo = demoWorker();
+  before(async () => {
+    global.__filename = url.pathToFileURL(resolve("./test/demo-worker.mjs"));
+    demo = await demoWorker();
   });
 
   it('simple string', async () => {
@@ -41,7 +45,7 @@ describe('web worker', () => {
     expect(rv).toEqual(1);
   });
 
-  afterAll(() => {
+  after(() => {
     demo.close();
   });
 })
