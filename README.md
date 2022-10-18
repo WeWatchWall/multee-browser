@@ -13,25 +13,25 @@ The code will look like below without `multee-browser`:
 
 ```javascript
 // worker.js
-process.on('message', (msg) => {
+onmessage = function (msg) {
   // do heavy load job
   let result = 0
   for (let i = 0; i < 100000000; i++) {
     result += heavy_and_return_same(i)
   }
   process.send(result)
-})
+};
 
-// master.js
-const child = fork('./worker')
+// main.js
+const child = new Worker('./worker');
 
-process.on('message', (msg) => {
+child.onmessage = function (msg) {
   // if is job result
   part2(msg)
-})
+};
 
 function part1() {
-  child.send(payload_for_worker)
+  child.postmessage(payload_for_worker)
 }
 
 function part2(result) {
@@ -65,7 +65,7 @@ module.exports = {
   }
 }
 
-// master.js
+// main.js
 async function partA() {
   const worker = require('./worker');
   const test = worker.start();
