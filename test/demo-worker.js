@@ -1,5 +1,4 @@
-import Multee from '../src/index.js';
-
+const Multee = require('../src/index.cjs');
 const multee = Multee();
 
 const test = multee.createHandler('test', (name) => {
@@ -16,7 +15,7 @@ const asyncJob = multee.createHandler('async', async () => {
   });
 });
 
-export default function main() {
+module.exports = function main() {
   const filename = global.__filename;
   const worker = multee.start(filename);
   return {

@@ -1,19 +1,19 @@
-import { expect } from 'chai';
-import { resolve } from 'path';
-import url  from 'url';
-import demoWorker from './demo-worker.mjs';
+const { expect } = require('chai');
+const { resolve } = require('path');
+const url  = require('url');
+const demoWorker = require('./demo-worker.js');
 
 describe('web worker', () => {
   let demo;
 
   before(async () => {
-    global.__filename = url.pathToFileURL(resolve("./test/demo-worker.mjs"));
+    global.__filename = url.pathToFileURL(resolve("./test/demo-worker.js"));
     demo = await demoWorker();
   });
 
   it('simple string', async () => {
     const rv = await demo.test('me');
-    expect(rv).toEqual('hello me');
+    expect(rv).to.equal('hello me');
   });
 
   it('echo object', async () => {
@@ -26,7 +26,7 @@ describe('web worker', () => {
       },
     };
     const rv = await demo.echo(input);
-    expect(rv).toEqual(input);
+    expect(rv).to.deep.equal(input);
   });
 
   it('echo with buffer', async () => {
@@ -35,14 +35,14 @@ describe('web worker', () => {
       name: Buffer.from('John'),
     };
     const rv = await demo.echo(input);
-    expect(rv).toHaveProperty('age', 33);
-    expect(rv).toHaveProperty('name');
-    expect(Buffer.from(rv.name)).toEqual(input.name);
+    expect(rv).to.has.property('age', 33);
+    expect(rv).to.has.property('name');
+    expect(Buffer.from(rv.name)).to.deep.equal(input.name);
   });
 
   it('async', async () => {
     const rv = await demo.async();
-    expect(rv).toEqual(1);
+    expect(rv).to.equal(1);
   });
 
   after(() => {
