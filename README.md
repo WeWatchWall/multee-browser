@@ -4,9 +4,10 @@
 [![NPM version](https://img.shields.io/npm/v/multee-browser.svg)](https://www.npmjs.com/package/multee-browser)
 
 `multee-browser` is a "battery" API. It turns the browser's multitasking
-[Dedicated Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) into simple async functions.
-It works with Typescript. The [multee](https://www.npmjs.com/package/multee)
-package provided a lot of the inspiration for this work.
+[Dedicated Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
+into simple async functions. It works with Typescript.
+The [multee](https://www.npmjs.com/package/multee) package provided a lot of
+the inspiration for this work.
 
 ## Getting started
 
