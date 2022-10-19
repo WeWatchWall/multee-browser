@@ -87,11 +87,11 @@ async function partA() {
 ## Browser-specific caveats
 
 1. The browser doesn't have the `require('module')` function.
-Therefore, the ESM module and import is the more supported option.
+Therefore, the ESM module and `import` is the more supported option.
 This is especially true for Web Workers.
 
-2. Usually, the file cannot reliably and automatically find out its own name
-due to browser bundling.
+2. Usually, the worker file cannot reliably and automatically find out its
+own name due to browser bundling.
 
 3. The imports need to be accessible from the client through the page loading
 mechanism. Webpack and esbuild might be able to allow for such bundling and
