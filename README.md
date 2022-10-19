@@ -86,8 +86,9 @@ async function partA() {
 
 ## Browser-specific caveats
 
-1. The browser doesn't have the require() function. Therefore, the ESM module
-and import is the more supported option. This is especially true for Web Workers.
+1. The browser doesn't have the `require('module')` function.
+Therefore, the ESM module and import is the more supported option.
+This is especially true for Web Workers.
 
 2. Usually, the file cannot reliably and automatically find out its own name
 due to browser bundling.
