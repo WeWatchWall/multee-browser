@@ -9,6 +9,8 @@ const WEB_NAME = 'multee_worker_web';
 
 function buildWorker(filename) {
   const name = isNode() ? NODE_NAME : WEB_NAME;
+  // The only difference is that the node worker is a CommonJS,
+  // NOT an ES module.
   const worker = new Worker(filename, {name: name});
   worker.send = worker.postMessage;
 
