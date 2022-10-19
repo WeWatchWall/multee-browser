@@ -3,7 +3,10 @@
 [![Build and test status](https://github.com/WeWatchWall/multee-browser/workflows/Lint%20and%20test/badge.svg)](https://github.com/WeWatchWall/multee-browser/actions?query=workflow%3A%22Lint+and+test%22)
 [![NPM version](https://img.shields.io/npm/v/multee-browser.svg)](https://www.npmjs.com/package/multee-browser)
 
-`multee-browser` is a "battery" API. It turns the browser's multitasking Web Workers into simple async functions. It works with Typescript. The [multee](https://www.npmjs.com/package/multee) package provided a lot of the inspiration for this work.
+`multee-browser` is a "battery" API. It turns the browser's multitasking
+[Dedicated Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) into simple async functions.
+It works with Typescript. The [multee](https://www.npmjs.com/package/multee)
+package provided a lot of the inspiration for this work.
 
 ## Getting started
 
@@ -13,7 +16,10 @@ npm i multee-browser
 
 ## Why multee-browser helps
 
-Without `multee-browser`, you need to listen to messages from your threads, and it is hard to integrate the listener to other part of your code. Also, when there are multiple operations inside the worker, we have to implement the dispatching logic inside the message listener.
+Without `multee-browser`, you need to listen to messages from your threads,
+and it is hard to integrate the listener to other part of your code.
+Also, when there are multiple operations inside the worker, we have to
+implement the dispatching logic inside the message listener.
 
 The code will look like below without `multee-browser`:
 
