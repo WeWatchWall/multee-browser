@@ -5,6 +5,12 @@
 
 `multee-browser` is a "battery" API. It turns the browser's multitasking Web Workers into simple async functions. It works with Typescript. The [multee](https://www.npmjs.com/package/multee) package provided a lot of the inspiration for this work.
 
+## Getting started
+
+```bash
+npm i multee-browser
+```
+
 ## Why multee-browser helps
 
 Without `multee-browser`, you need to listen to messages from your threads, and it is hard to integrate the listener to other part of your code. Also, when there are multiple operations inside the worker, we have to implement the dispatching logic inside the message listener.
