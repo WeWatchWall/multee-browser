@@ -116,7 +116,7 @@ npm i --save-dev browserify esmify
 ```json
 "scripts": {
   ...
-  "deploy": "browserify src/worker.js -p esmify > public/worker.js",
+  "deploy": "browserify --im src/worker.js -p esmify > public/worker.js",
   ...
 }
 ```
